@@ -10,5 +10,6 @@ class TodoListView(ListView):
         return render(request, 'todo_list.html', {"item":items})
     
 class TodoDetailView(DetailView):
-    def get(self, request):
+    def get(self, request, item_id):
         item = get_object_or_404(TodoItem, pk=item_id)
+        return render(request, "todo_detail.html", {"item":item})
