@@ -2,17 +2,18 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<h1>To-Do List</h1>
-<ul>
-    {% for item in items %}
-        <li>{{ item.title }}</li>
-    {% endfor %}
-</ul>
-
-    <h2>Task Name</h2>
+    <h1>To-Do List</h1>
+    <ul>
+        {% for item in items %}
+            <a href="{% url 'todo_detail' pk=item.pk %}"><li>{{ item.title }}</li></a>
+            <a href="{% url 'todo_update' pk=item.pk %}">Edit</a>
+            <a href="{% url 'todo_delete' pk=item.pk %}">Delete</a>
+            {% endfor %}
+    </ul>
+    <h2>Add New Task</h2>
     <form method="post">
         {% csrf_token %}
         {{ form|crispy }}
-        <button type="submit">Create</button>
+        <button type="submit" class="btn btn-primary">Create</button>
     </form>
 {% endblock content %}
