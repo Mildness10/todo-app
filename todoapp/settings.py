@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'crispy_bootstrap4',
     'crispy_forms',
     'todo.apps.TodoConfig',
     'django.contrib.admin',
